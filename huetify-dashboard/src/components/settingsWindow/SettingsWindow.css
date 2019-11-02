@@ -1,0 +1,17 @@
+.settingsWindow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 470px;
+    max-width: 80%;
+}
+
+.widget {
+    color: white;
+    top: 10%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #535353;
+    border-radius: 5px;
+    font-size: 25px;
+}

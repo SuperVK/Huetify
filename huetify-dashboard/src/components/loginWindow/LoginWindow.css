@@ -1,0 +1,98 @@
+body {
+    background: #212121;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.loginWindow {
+    color: white;
+    text-align: center;
+    font-size: 200%; 
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.signInButton {
+    width: 350px;
+    padding: 20px;
+    margin: 20px;
+    background: #424242;
+    transition-duration: 0.3s;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.signInButton[connected=true] {
+    padding: 20px;
+    margin: 20px;
+    background: #388E3C;
+    transition-duration: 0.3s;
+    cursor: default;
+}
+
+.signInButton[connected=false]:hover {
+    cursor: pointer;
+    background: #616161
+}
+
+.launch[locked=false] {
+    position: absolute;
+    padding: 20px;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60%;
+    background: #424242;
+    color: white;
+    cursor: pointer;
+}
+
+.launch {
+    padding: 20px;
+    width: 200px;
+    top: 75%;
+    background: #424242;
+    color: #616161;
+    cursor: default;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bridge {
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #535353;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    font-size: 75%;
+    width: 200px;
+    text-align: center;
+}
+
+.bridge:hover {
+    background: #616161;
+    cursor: pointer;
+}
+
+.pressing {
+    width: 350px;
+    padding: 20px;
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, #388E3C 50%, #535353 50%);
+    transition-duration: 0.4s;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+

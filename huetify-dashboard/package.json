@@ -1,0 +1,45 @@
+{
+  "name": "huetify",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./main.js",
+  "homepage": "/",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "set NODE_ENV=dev && electron ."
+  },
+  "proxy": "http://localhost:3468",
+  "author": "SuperVK",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "huetify-manager": "file:../Huetify-manager",
+    "js-cookie": "^2.2.1",
+    "node-fetch": "^2.6.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
