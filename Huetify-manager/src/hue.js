@@ -4,7 +4,7 @@ export default class Hue {
         this.selectedLight = '4'
     }
     setLampState(body) {
-        fetch(`https://${this.ip}/api/${this.token}/lights/${this.selectedLight}/state`, {
+        fetch(`http://${this.ip}/api/${this.token}/lights/${this.selectedLight}/state`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -14,11 +14,11 @@ export default class Hue {
     }
     createUsername() {
         return new Promise((resolve, reject) => {
-            fetch(`https://${this.ip}/api`, {
+            fetch(`http://${this.ip}/api`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                // headers: {
+                //     'Content-Type': 'application/json',
+                // },
                 body: JSON.stringify({
                     devicetype: `huetify`
                 })
@@ -40,7 +40,12 @@ export default class Hue {
     }
     async getAllLights() {
         return new Promise((resolve, reject) => {
-            fetch(`https://${this.ip}/api/${this.token}/lights`).then(body => body.json())
+            fetch(`http://${this.ip}/api/${this.token}/lights`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(body => body.json())
                 .then(lights => {
                     let lightsArr = []
                     for(let light in lights) {
