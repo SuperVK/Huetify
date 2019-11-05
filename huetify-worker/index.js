@@ -1,6 +1,6 @@
 const CLIENT_ID = '6caaf5d0a58e47868553160955e5b8e4'
 const CLIENT_SECRET = '66c3c9105c2147fb89a49abe33c7aafd'
-const REDIRECT_URL = '/api/spotifycb'
+const REDIRECT_URL = '/spotifycb'
 const WORKER_URL = 'https://huetify.supervk.workers.dev'
 const PROJECT_URL = 'http://localhost:3000'
 
@@ -15,30 +15,34 @@ addEventListener('fetch', event => {
 
 async function handleRequest(request) {
     let requestURL = new URL(request.url)
-    console.log(requestURL.pathname)
     switch(requestURL.pathname) {
         case '/spotifycb': {
+            let code = requestURL.searchParams.get('code')
+            console.log(code)
             let resp = await fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Basic ' + Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64') //clientID:clientSecret in base64
+                    'Authorization': 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`) //clientID:clientSecret in base64
                 },
-                body: `grant_type=authorization_code&code=${code}&redirect_uri=${encodeURIComponent('https://' + WORKER_URL + REDIRECT_URL)}`
+                body: `grant_type=authorization_code&code=${code}&redirect_uri=${encodeURIComponent(WORKER_URL + REDIRECT_URL)}`
             }).then((spotiRes) => spotiRes.json())
             .then(body => {
                 if(body.error) {
                     console.error(body)
                     return new Response('Bad gateway', {status: 502})
                 }
-                return new Response(null, {
-                    status: 301,
-                    headers: {
-                        'Set-Cookie': `spotifyRefreshToken=${body.refresh_token}; expires=${new Date(Date.now()+(1000*60*60*24*30)).toUTCString()}`,
-                        'Set-Cookie': `spotifyAccessToken=${body.access_token}; maxAge=${body.expires_in*1000}`,
-                        'location': PROJECT_URL
-                    }
+                console.log(`spotifyRefreshToken=${body.refresh_token}; expires=${1000*60*60*24*30}`)
+                let resheaders = new Headers()
+                resheaders.append(`Set-Cookie`, `spotifyAccessToken=${body.access_token}; maxAge=${body.expires_in*1000}`)
+                resheaders.append(`Set-Cookie`, `spotifyRefreshToken=${body.refresh_token}; maxAge=${1000*60*60*24*30}`)
+                resheaders.append(`location`, PROJECT_URL)
+                return new Response('something', {
+                    status: 302,
+                    headers: resheaders
                 })
+            }).catch(e => {
+                return new Response(e, {status: 502})
             })
             return resp;
         }
@@ -48,10 +52,9 @@ async function handleRequest(request) {
             '?response_type=code' +
             '&client_id=' + CLIENT_ID +
             (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-            '&redirect_uri=' + encodeURIComponent('https://' + WORKER_URL + REDIRECT_URL)
-            console.log(url)
+            '&redirect_uri=' + encodeURIComponent(WORKER_URL + REDIRECT_URL)
             return new Response(null, {
-                status: 301,
+                status: 302,
                 headers: {
                     'location': url
                 }
