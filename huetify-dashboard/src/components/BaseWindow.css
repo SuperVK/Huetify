@@ -1,0 +1,10 @@
+footer {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 15px;
+}
+
+footer, a {
+    color: #a5a5a5;
+}

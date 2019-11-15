@@ -12,7 +12,6 @@ export default class Manager extends EventEmitter {
         this.isPaused = true
     }
     launch() {
-        this.emit('launch')
         this.spotifySyncInterval = setInterval(() => {
             this.updateSong()
             this.emit('update')

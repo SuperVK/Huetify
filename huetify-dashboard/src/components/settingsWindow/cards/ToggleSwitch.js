@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './ToggleSwitch.css'
-import { manager } from '../..'
+import { manager } from '../../..'
 
 export default class ToggleSwitch extends Component {
     constructor(props) {

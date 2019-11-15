@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './LightSelection.css'
-import { manager } from '../..'
+import { manager } from '../../..'
 
 export default class LightSelection extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ export default class LightSelection extends Component {
         return (
             <div className="widget lightSelection">
                 Light selection:
-                <div className="footer">Currently limited to one.</div> 
+                <div className="subtext">Currently limited to one.</div> 
                 <div className="content lights">
                 {
                 this.state.lights.map(light => {

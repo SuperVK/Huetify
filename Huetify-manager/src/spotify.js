@@ -3,14 +3,11 @@ export default class Spotify {
         this.manager = manager
         this.token = null
     }
-    async getAccessToken() {
-        let body = await fetch(`/api/accesstoken`) //this sets the cookie spotifyAccessToken
-        if(body.status === 401) return 'NO_REFRESH_TOKEN'
+    async getAccessToken(workerURL) {
+        let res = await fetch(`${workerURL}/accesstoken`) //this sets the cookie spotifyAccessToken, no it doesn't lol
+        if(res.status === 401) return 'NO_REFRESH_TOKEN'
             
-        let cookies = document.cookie
-        if(cookies === '') return await this.getAccessToken()
-        let spotifyAccessToken = cookies.find(c => c.trim().indexOf('spotifyAccessToken') === 0)
-        return spotifyAccessToken.split('=')[1]
+        return await res.text()
     }
     async request(endpoint, method, body) {
         let res = await fetch(`https://api.spotify.com/v1/${endpoint}`, {

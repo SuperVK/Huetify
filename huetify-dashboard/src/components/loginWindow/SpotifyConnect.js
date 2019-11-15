@@ -10,6 +10,6 @@ export default class SpotifyConnect extends Component {
         return button
     }
     openSpotifyLogin() {
-        window.location = '/api/spotifylogin'
+        window.location = 'https://huetifydev.supervk.workers.dev/spotifylogin'
     }
 }

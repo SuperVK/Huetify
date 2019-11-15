@@ -1,4 +1,4 @@
-.settingsWindow {
+.settings {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -14,4 +14,12 @@
     background-color: #535353;
     border-radius: 5px;
     font-size: 25px;
+}
+
+.backNavigator {
+    position: absolute;
+    margin: 10px;
+    color: #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+    cursor: pointer;
 }

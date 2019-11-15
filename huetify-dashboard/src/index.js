@@ -1,30 +1,26 @@
 import React from 'react';
 import { render } from 'react-dom';
 import LoginWindow from './components/loginWindow/LoginWindow'
-import Manager from 'huetify-manager'
 import SettingWindow from './components/settingsWindow/SettingsWindow'
+import BaseWindow from './components/BaseWindow'
+import Manager from 'huetify-manager'
 import * as serviceWorker from './serviceWorker';
-// import Player from './components/settingsWindow/Player';
 
+window.WORKER_URL = 'https://huetifydev.supervk.workers.dev'
 export const manager = new Manager()
 
-render(
-    <LoginWindow></LoginWindow>,
-    document.getElementById('root')
-);
-
-
-
-manager.on('start', () => {
+export function loadLoginWindow() {
     render(
-        <SettingWindow></SettingWindow>,
+        <BaseWindow subWindow={<LoginWindow></LoginWindow>}></BaseWindow>,
         document.getElementById('root')
     );
-})
+}
+loadLoginWindow()
+
 
 manager.on('update', () => {
     render(
-        <SettingWindow></SettingWindow>,
+        <BaseWindow subWindow={<SettingWindow></SettingWindow>}></BaseWindow>,
         document.getElementById('root')
     );
 })
