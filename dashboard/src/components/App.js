@@ -4,7 +4,7 @@ import LoginWindow from './widgets/loginWindow/LoginWindow'
 import LightSelection from './widgets/settingsWidgets/LightSelection'
 import BrightnessSlider from './widgets/settingsWidgets/BrightnessSlider'
 import ToggleSwitch from './widgets/settingsWidgets/ToggleSwitch'
-import { manager } from '../' 
+import { manager } from '..' 
 import './App.css'
 
 

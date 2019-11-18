@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './BrightnessSlider.css'
-import { manager } from '../../..' 
+import { manager } from '../../../../src' 
 
 export default class BrightnessSlider extends Component {
     render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './LoginWindow.css'
 import HueConnect from './HueConnect'
 import SpotifyConnect from './SpotifyConnect'
-import { manager } from '../../../'
+import { manager } from '../../..'
 import Cookies from 'js-cookie'
 
 export default class LoginWindow extends Component {

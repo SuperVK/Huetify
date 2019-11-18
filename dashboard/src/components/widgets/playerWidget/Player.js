@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { manager } from '../../..'
+import { manager } from '../../../../src'
 import './Player.css'
 
 export default class Player extends Component {
