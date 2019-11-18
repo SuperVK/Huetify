@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { manager } from '../../..'
+import { manager } from '../../../'
 import Cookies from 'js-cookie'
 
 export default class HueConnect extends Component {

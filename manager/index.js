@@ -1,1 +1,1 @@
-module.exports = require('./src/manager.js.js')
+module.exports = require('./src/manager.js')

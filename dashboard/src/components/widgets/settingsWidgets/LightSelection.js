@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './LightSelection.css'
-import { manager } from '../../../../src'
+import { manager } from '../../../'
 
 export default class LightSelection extends Component {
     constructor(props) {

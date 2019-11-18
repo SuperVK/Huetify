@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { manager } from '../../..'
+import { manager } from '../../../'
 
 export default class SpotifyConnect extends Component {
     render() {

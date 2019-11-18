@@ -19,7 +19,7 @@
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
-    "huetify-manager": "file:../Huetify-manager",
+    "huetify-manager": "file:../manager",
     "js-cookie": "^2.2.1",
     "node-fetch": "^2.6.0",
     "rc-slider": "^8.7.1",
