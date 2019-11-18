@@ -70,7 +70,7 @@ export default class Song {
         this.beatNumber = 0
     }
     newBeat() {
-        let brightness = Math.round((254-(254/4*this.beatNumber)))
+        let brightness = Math.round((this.manager.brightness-(this.manager.brightness/4*this.beatNumber)))
         //console.log('new beat ' + this.name + ' - ' + brightness)
         this.beatNumber++
         if(!this.manager.isPaused) {

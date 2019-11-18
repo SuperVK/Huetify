@@ -5,7 +5,7 @@ import './Player.css'
 export default class Player extends Component {
     render() {
         return (
-            <div className="player">
+            <div className="player" id="player">
                 <div className="playerWidget">
                     <img className="thumbnail" alt="Album Cover" src={manager.currentlyPlaying.imgurl}></img>
                     <div className="details">

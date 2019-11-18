@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { manager } from '../../index'
+import { manager } from '../../../'
 import Cookies from 'js-cookie'
 
 export default class HueConnect extends Component {
@@ -13,16 +13,16 @@ export default class HueConnect extends Component {
     }
     render() {
         
-        let button = <div className="signInButton">woop</div>
+        let button = <div className="signInButton hueLogin">woop</div>
         let loggedIn = manager.hue.token
-        if(loggedIn) button = <div connected="true" className="signInButton">Connected to Hue</div>
+        if(loggedIn) button = <div connected="true" className="signInButton hueLogin">Connected to Hue</div>
         else {
             if(this.state.action === 'loading') this.loadBridges()
-            if(this.state.action === 'loading') button = <div connected="false" className="signInButton">Searching hue bridges...</div>
+            if(this.state.action === 'loading') button = <div connected="false" className="signInButton hueLogin">Searching hue bridges...</div>
             else if(this.state.action === 'choosing') {
                 
                 button = 
-                <div className="signInButton"><div>Hue bridges found:</div>
+                <div className="signInButton hueLogin"><div>Hue bridges found:</div>
                     {this.bridges.map(bridge => {
                         return <div key={bridge.id} onClick={this.connectBridge.bind(this, bridge.id)} className="bridge">
                         {bridge.internalipaddress}
@@ -31,7 +31,7 @@ export default class HueConnect extends Component {
                 </div>
                 
             } else if(this.state.action === 'pressing') {
-                button = <div className="pressing" style={{
+                button = <div className="signInButton pressing" style={{
                     backgroundPosition: 100-((this.state.timing/60)*100)+'%'
                 }}>
                 Press the button on the hue bridge

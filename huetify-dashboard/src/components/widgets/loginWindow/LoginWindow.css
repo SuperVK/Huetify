@@ -1,0 +1,76 @@
+body {
+    background: #212121;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.loginWindow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    color: white;
+    text-align: center;
+    font-size: 150%;
+}
+
+
+.signInButton {
+    height: auto;
+    width: 40%;
+    margin-top: 15px;
+    padding: 20px;
+    background: #424242;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .loginWindow {
+        flex-direction: column;
+    }
+    .spotifyLogin {
+        margin-right: 0px;
+    }
+    .signInButton {
+        width: auto;
+    }
+}
+
+
+
+
+.signInButton[connected=true] {
+    background: #388E3C;
+    transition-duration: 0.3s;
+    cursor: default;
+}
+
+.signInButton[connected=false]:hover {
+    cursor: pointer;
+    background: #616161
+}
+
+
+.bridge {
+    background: #535353;
+    transition-duration: 0.3s;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.bridge:hover {
+    background: #616161;
+    cursor: pointer;
+}
+
+.pressing {
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, #388E3C 50%, #535353 50%);
+    transition-duration: 0.4s;
+}
+
+

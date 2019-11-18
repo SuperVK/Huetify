@@ -2,6 +2,7 @@ export default class Spotify {
     constructor(manager) {
         this.manager = manager
         this.token = null
+        this.isReady = false;
     }
     async getAccessToken(workerURL) {
         let res = await fetch(`${workerURL}/accesstoken`) //this sets the cookie spotifyAccessToken, no it doesn't lol

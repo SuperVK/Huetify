@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './LoginWindow.css'
 import HueConnect from './HueConnect'
 import SpotifyConnect from './SpotifyConnect'
-import { manager } from '../..'
+import { manager } from '../../../'
 import Cookies from 'js-cookie'
 
 export default class LoginWindow extends Component {
@@ -11,7 +11,7 @@ export default class LoginWindow extends Component {
         let searchParam = new URLSearchParams(document.location.search)
         let spotifyCode = searchParam.get('code')
         if(spotifyCode !== null) {
-            fetch(`https://huetifydev.supervk.workers.dev/refreshtoken`, {
+            fetch(`${window.WORKER_URL}/refreshtoken`, {
                 headers: {
                     'Authorization': spotifyCode
                 }
@@ -53,7 +53,7 @@ export default class LoginWindow extends Component {
     render() {
         return (
             <div id="loginWindow" className="loginWindow">
-                <SpotifyConnect></SpotifyConnect>
+                <SpotifyConnect></SpotifyConnect> 
                 <HueConnect></HueConnect>
             </div>
         )

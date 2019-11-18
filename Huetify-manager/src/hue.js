@@ -1,9 +1,11 @@
 export default class Hue {
     constructor(manager) {
         this.manager = manager
-        this.selectedLight = '4'
+        this.selectedLight = '1'
+        this.isReady = false;
     }
     setLampState(body) {
+        if(this.ip === undefined) return reject('No hue IP found while attempting to get all Lights')
         fetch(`http://${this.ip}/api/${this.token}/lights/${this.selectedLight}/state`, {
             method: 'PUT',
             headers: {
@@ -13,6 +15,7 @@ export default class Hue {
         })
     }
     createUsername() {
+        if(this.ip === undefined) return reject('No hue IP found while attempting to get all Lights')
         return new Promise((resolve, reject) => {
             fetch(`http://${this.ip}/api`, {
                 method: 'POST',
@@ -40,6 +43,7 @@ export default class Hue {
     }
     async getAllLights() {
         return new Promise((resolve, reject) => {
+            if(this.ip === undefined) return reject('No hue IP found while attempting to get all Lights')
             fetch(`http://${this.ip}/api/${this.token}/lights`, {
                 method: 'GET',
                 headers: {

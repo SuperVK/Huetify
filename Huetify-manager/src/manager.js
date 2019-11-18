@@ -10,6 +10,7 @@ export default class Manager extends EventEmitter {
         this.hue = new Hue(this)
         this.spotify = new Spotify(this)
         this.isPaused = true
+        this.brightness = 254
     }
     launch() {
         this.spotifySyncInterval = setInterval(() => {
@@ -37,14 +38,20 @@ export default class Manager extends EventEmitter {
     }
     setSpotifyToken(token) {
         this.spotify.token = token
-        if(this.hue.token) this.launch()
+        this.spotify.isReady = true;
+        this.launch()
+        this.emit('update')
     }
     setHueToken(token) {
         this.hue.token = token
-        if(this.spotify.token) this.launch()
+        this.hue.isReady = true
+        this.emit('update')
     }
     setHueIP(IP) {
         this.hue.ip = IP
+    }
+    setBrightness(brightness) {
+        this.brightness = brightness
     }
     updateSong() {
         return new Promise((resolve, reject) => {
@@ -77,10 +84,12 @@ export default class Manager extends EventEmitter {
                     }
                     if(!currentlyPlaying.is_playing && this.currentlyPlaying.isPlaying) {
                         clearInterval(this.currentlyPlaying.timingInterval)
-                        this.hue.setLampState({
-                            on: false,
-                            transitiontime: 0
-                        })
+                        if(!this.isPaused) {
+                            this.hue.setLampState({
+                                on: false,
+                                transitiontime: 0
+                            })
+                        }
                         this.currentlyPlaying.isPlaying = false
                         return
                     }
