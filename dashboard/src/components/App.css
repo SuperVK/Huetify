@@ -1,3 +1,10 @@
+body {
+    background: #212121;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
 .app {
     display: flex;
     flex-direction: column;
