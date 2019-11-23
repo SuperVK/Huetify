@@ -4,10 +4,10 @@ const {
 } = require('electron')
 const handler = require('serve-handler');
 const http = require('http');
- 
+require('dotenv').config()
 const server = http.createServer((request, response) => {
   return handler(request, response, {
-      public: process.env.PUBLIC
+      public: process.env.PUBLICFOLDER
   });
 })
  
@@ -29,7 +29,7 @@ function createWindow() {
     })
 
 
-    mainWindow.loadURL('http://localhost:5000')
+    mainWindow.loadURL(`http://localhost:${process.env.PORT}`)
 
     mainWindow.on('closed', function () {
         mainWindow = null
