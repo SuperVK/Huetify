@@ -3,7 +3,6 @@ import { manager } from '../../../'
 import Cookies from 'js-cookie'
 
 export default class HueConnect extends Component {
-    bridges
     constructor(props) {
         super(props)
         this.state = {
