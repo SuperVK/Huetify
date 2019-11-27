@@ -120,10 +120,7 @@ async function handleRequest(request) {
                 return new Response(null, {
                     status: 204,
                     headers: {
-                        'Access-Control-Allow-Origin': PROJECT_URL,
-                        'Access-Control-Allow-Methods': 'GET',
-                        'Access-Control-Allow-Headers': 'Authorization',
-                        'Vary': 'Origin'
+                        'Access-Control-Allow-Origin': '*'
                     }
                 })
             }
@@ -131,8 +128,7 @@ async function handleRequest(request) {
                 return new Response('woop', {
                     status: 401,
                     headers: {
-                        'Access-Control-Allow-Origin': PROJECT_URL,
-                        'Vary': 'Origin'
+                        'Access-Control-Allow-Origin': '*'
                     }
                 })
             } else {
@@ -150,24 +146,21 @@ async function handleRequest(request) {
                         return new Response('wowzers', { 
                             status: 500,
                             headers: {
-                                'Access-Control-Allow-Origin': PROJECT_URL,
-                                'Vary': 'Origin'
+                                'Access-Control-Allow-Origin': '*'
                             }
                         })
                     }
                     return new Response(body.access_token, {
                         status: 200,
                         headers: {
-                            'Access-Control-Allow-Origin': PROJECT_URL,
-                            'Vary': 'Origin'
+                            'Access-Control-Allow-Origin': '*'
                         }
                     })
                 }).catch(e => {
                     return new Response(e, { 
                         status: 500,
                         headers: {
-                            'Access-Control-Allow-Origin': PROJECT_URL,
-                            'Vary': 'Origin'
+                            'Access-Control-Allow-Origin': '*'
                         }
                     })
                 })
@@ -179,7 +172,7 @@ async function handleRequest(request) {
     return new Response('404 Not found', {
         status: 404,
         headers: {
-            'Access-Control-Allow-Origin': PROJECT_URL
+            'Access-Control-Allow-Origin': '*'
         }
     })
 }

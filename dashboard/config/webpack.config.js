@@ -61,10 +61,11 @@ module.exports = function(webpackEnv) {
   // In development, we always serve from the root. This makes config easier.
   const publicPath = isEnvProduction
     ? paths.servedPath
-    : isEnvDevelopment && '/';
+    : isEnvDevelopment && './';
   // Some apps do not use client-side routing with pushState.
   // For these, "homepage" can be set to "." to enable relative asset paths.
-  const shouldUseRelativeAssetPaths = publicPath === './';
+  //const shouldUseRelativeAssetPaths = publicPath === './';
+  const shouldUseRelativeAssetPaths = true
 
   // `publicUrl` is just like `publicPath`, but we will provide it to our app
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
@@ -164,31 +165,21 @@ module.exports = function(webpackEnv) {
     ].filter(Boolean),
     output: {
       // The build folder.
-      path: isEnvProduction ? paths.appBuild : undefined,
+      path: isEnvProduction ? paths.appBuild : paths.appBuild,
       // Add /* filename */ comments to generated require()s in the output.
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].js'
-        : isEnvDevelopment && 'static/js/bundle.js',
+      filename: 'static/js/[name].[contenthash:8].js',
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
-      chunkFilename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].chunk.js'
-        : isEnvDevelopment && 'static/js/[name].chunk.js',
+      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
       // We inferred the "public path" (such as / or /my-project) from homepage.
       // We use "/" in development.
       publicPath: publicPath,
       // Point sourcemap entries to original disk location (format as URL on Windows)
-      devtoolModuleFilenameTemplate: isEnvProduction
-        ? info =>
-            path
-              .relative(paths.appSrc, info.absoluteResourcePath)
-              .replace(/\\/g, '/')
-        : isEnvDevelopment &&
-          (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+      devtoolModuleFilenameTemplate: info => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/'),
       // Prevents conflicts when multiple Webpack runtimes (from different apps)
       // are used on the same page.
       jsonpFunction: `webpackJsonp${appPackageJson.name}`,

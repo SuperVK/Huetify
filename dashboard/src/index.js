@@ -4,7 +4,7 @@ import App from './components/App'
 import Manager from 'huetify-manager'
 import * as serviceWorker from './serviceWorker';
 
-window.WORKER_URL = 'https://huetifydev.supervk.workers.dev'
+window.WORKER_URL = 'https://huetify.supervk.workers.dev'
 export const manager = new Manager()
 
 render(
