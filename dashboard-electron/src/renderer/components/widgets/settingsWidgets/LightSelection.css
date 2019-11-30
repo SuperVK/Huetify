@@ -1,0 +1,28 @@
+.subtext {
+    font-size: 50%;
+}
+
+.lights {
+    padding-top: 20px;
+}
+
+.light {
+    margin: -3px;
+    padding: 10px;
+    font-size: 25px;
+    border-bottom: solid gray 3px;
+    border-top: solid gray 3px;
+}
+
+.light:hover {
+    cursor: pointer;
+    background-color: #747474;
+}
+
+.selected {
+    border-left: 10px solid #388E3C;
+    border-bottom: solid gray 3px;
+    border-top: solid gray 3px;
+    background-color: #747474;
+}
+

@@ -1,0 +1,50 @@
+{
+  "name": "huetify",
+  "version": "0.0.1",
+  "description": "The electron dashboard for Huetify",
+  "author": "SuperVK",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
+  },
+  "dependencies": {
+    "dotenv": "6.2.0",
+    "huetify-manager": "../manager",
+    "js-cookie": "^2.2.1",
+    "node-fetch": "^2.6.0",
+    "rc-slider": "^8.7.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "source-map-support": "^0.5.12"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.7.4",
+    "electron": "5.0.6",
+    "electron-builder": "^21.2.0",
+    "electron-webpack": "^2.7.4",
+    "webpack": "~4.35.3"
+  },
+  "build": {
+    "appId": "xyz.supervk.huetify",
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "electronWebpack": {
+    "title": true,
+    "whiteListedModules": [
+      "huetify-manager"
+    ],
+    "main": {
+      "sourceDirectory": "src/main"
+    },
+    "renderer": {
+      "sourceDirectory": "src/renderer",
+      "template": "src/renderer/index.html"
+    }
+  }
+}
