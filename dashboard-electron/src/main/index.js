@@ -7,10 +7,6 @@ import handleSpotifyLogin from './spotifyLogin.js'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
-if (module.hot) {
-  module.hot.accept();
-}
-
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
 
@@ -31,20 +27,17 @@ function createMainWindow() {
   })
 
   if (isDevelopment) {
-    window.webContents.openDevTools()
-  }
-
-  if (isDevelopment) {
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
-  }
-  else {
+  } else {
     window.loadURL(formatUrl({
       pathname: path.join(__dirname, 'index.html'),
       protocol: 'file',
       slashes: true
     }))
   }
-  handleSpotifyLogin(window)
+  
+  
+  
   window.on('closed', () => {
     mainWindow = null
   })
@@ -67,14 +60,9 @@ app.on('window-all-closed', () => {
   }
 })
 
-app.on('activate', () => {
-  // on macOS it is common to re-create a window even after all windows have been closed
-  if (mainWindow === null) {
-    mainWindow = createMainWindow()
-  }
-})
 
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow()
+  handleSpotifyLogin(mainWindow)
 })
