@@ -5,7 +5,7 @@ import * as path from 'path'
 import { format as formatUrl } from 'url'
 import handleSpotifyLogin from './spotifyLogin.js'
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
+const isDevelopment = true
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
@@ -27,7 +27,12 @@ function createMainWindow() {
   })
 
   if (isDevelopment) {
-    window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
+    //window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
+    window.loadURL(formatUrl({
+      pathname: path.join(__dirname, '../renderer/index.html'),
+      protocol: 'file',
+      slashes: true
+    }))
   } else {
     window.loadURL(formatUrl({
       pathname: path.join(__dirname, 'index.html'),

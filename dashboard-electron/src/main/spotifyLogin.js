@@ -16,24 +16,28 @@ export default function handleSpotifyLogin(win) {
         ]
     };
     console.log('wakka zooi')
-    webRequest.onBeforeRequest(filter, async (details, cb) => {
-        let searchParams = (new URL(details.url)).searchParams
-        let spotifyCode = searchParams.get('code')
-        let state = searchParams.get('state')
-        fetch(`${WORKER_URL}/refreshtoken`, {
-            headers: {
-                'Authorization': spotifyCode
-            }
-        }).then(res => res.text())
-        .then(refreshtoken => {
-            console.log(state)
-            let newurl = new URL(state)
-            newurl.searchParams.set('code', refreshtoken)
-            cb({
-                redirectURL: newurl.href
-            })
-        }).catch(e => {
-            console.log(e)
+    webRequest.onBeforeRequest(filter, (details, cb) => handleURL(details, cb))
+    webRequest.onBeforeRedirect(filter, (details, cb) => handleURL(details, cb))
+}
+
+function handleURL(details, cb) {
+    console.log(details)
+    let searchParams = (new URL(details.url)).searchParams
+    let spotifyCode = searchParams.get('code')
+    let state = searchParams.get('state')
+    fetch(`${WORKER_URL}/refreshtoken`, {
+        headers: {
+            'Authorization': spotifyCode
+        }
+    }).then(res => res.text())
+    .then(refreshtoken => {
+        console.log(state)
+        let newurl = new URL(state)
+        newurl.searchParams.set('code', refreshtoken)
+        cb({
+            redirectURL: newurl.href
         })
-    });
+    }).catch(e => {
+        console.log(e)
+    })
 }
