@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { manager } from '../../../'
+import spotifyLogin from './SpotifyLogin';
 
 export default class SpotifyConnect extends Component {
     render() {
@@ -9,7 +10,12 @@ export default class SpotifyConnect extends Component {
         else button = <div connected="false" onClick={this.openSpotifyLogin} className="signInButton spotifyLogin">Connect to Spotify</div>         
         return button
     }
-    openSpotifyLogin() {
-        window.location = `${window.WORKER_URL}/spotifylogin?ref=${encodeURIComponent(window.location)}`
+    logOut() {
+        
+    }
+    async openSpotifyLogin() {
+        spotifyLogin.openSpotifyLogin()
     }
 }
+
+

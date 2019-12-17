@@ -63,4 +63,16 @@ export default class Hue {
                 })
         })
     }
+    turnOff() {
+        this.manager.hue.setLampState({
+            on: false,
+            transitiontime: 0
+        })
+    }
+    turnOn() {
+        this.manager.hue.setLampState({
+            on: true,
+            transitiontime: 0
+        })
+    }
 }

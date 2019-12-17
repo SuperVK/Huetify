@@ -12,12 +12,12 @@ export default function handleSpotifyLogin(win) {
   
     const filter = {
         urls: [
-            `${redirectUri}/*`
+            `${redirectUri}/`
         ]
     };
     console.log('wakka zooi')
-    webRequest.onBeforeRequest(filter, (details, cb) => handleURL(details, cb))
-    webRequest.onBeforeRedirect(filter, (details, cb) => handleURL(details, cb))
+    // webRequest.onBeforeRequest(filter, (details, cb) => handleURL(details, cb))
+    // webRequest.onBeforeRedirect(filter, (details, cb) => handleURL(details, cb))
 }
 
 function handleURL(details, cb) {

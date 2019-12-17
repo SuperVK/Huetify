@@ -20,12 +20,12 @@ async function handleRequest(request) {
     switch(requestURL.pathname) {  
         case '/spotifylogin': {
             let scopes = 'user-read-currently-playing'
-            let referrer = requestURL.searchParams.get('ref')
+            //let referrer = requestURL.searchParams.get('ref')
             let url = 'https://accounts.spotify.com/authorize' +
             '?response_type=code' +
             '&client_id=' + CLIENT_ID +
             (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-            '&redirect_uri=' + encodeURIComponent(CALLBACK_URL) + '&state=' + referrer
+            '&redirect_uri=' + encodeURIComponent(CALLBACK_URL)// + '&state=' + referrer
             return new Response(null, {
                 status: 302,
                 headers: {

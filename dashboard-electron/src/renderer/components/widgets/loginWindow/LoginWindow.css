@@ -40,6 +40,12 @@
     cursor: default;
 }
 
+.signInButton[connected=true]:hover {
+    background: #C13131;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
 .signInButton[connected=false]:hover {
     cursor: pointer;
     background: #616161
