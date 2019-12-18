@@ -3,9 +3,12 @@
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
-import handleSpotifyLogin from './spotifyLogin.js'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
+
+if (module.hot) {
+  module.hot.accept();
+}
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
