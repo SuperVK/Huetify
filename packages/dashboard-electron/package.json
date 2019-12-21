@@ -1,5 +1,5 @@
 {
-  "name": "huetify",
+  "name": "huetify-electron",
   "version": "0.0.1",
   "description": "The electron dashboard for Huetify",
   "author": "SuperVK",
@@ -13,9 +13,10 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
+    "@loopmode/electron-webpack-config-yarn-workspaces": "^0.2.0",
     "dotenv": "^6.2.0",
     "electron-log": "^3.0.9",
-    "huetify-manager": "../manager",
+    "huetify-manager": "^0.1.1",
     "js-cookie": "^2.2.1",
     "node-fetch": "^2.6.0",
     "rc-slider": "^8.7.1",
@@ -43,6 +44,7 @@
       "sourceDirectory": "src/main"
     },
     "renderer": {
+      "webpackConfig": "custom.additions.webpack.js",
       "sourceDirectory": "src/renderer"
     },
     "whiteListedModules": [

@@ -12,6 +12,11 @@ export default class Spotify {
             this.manager.emit('update')
         }, this.pollingTime)
     }
+    
+    stopPolling() {
+        clearInterval(this.pollingInterval)
+        this.songPause()
+    }
 
     pollCurrentlyPlaying() {
         let requestSend = new Date()-0
@@ -29,7 +34,7 @@ export default class Spotify {
     }
 
     songPause() {
-        clearInterval(this.manager.song.timingInterval)
+        if(this.manager.song.timingInterval != undefined) clearInterval(this.manager.song.timingInterval)
         if(!this.manager.isPaused) this.manager.hue.turnOff()
         this.manager.song.isPlaying = false
     }

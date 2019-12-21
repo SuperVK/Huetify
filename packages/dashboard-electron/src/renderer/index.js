@@ -19,7 +19,4 @@ manager.on('update', () => {
     );
 })
 
-if (module.hot) {
-    module.hot.accept();
-}
 

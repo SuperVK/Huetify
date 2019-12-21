@@ -6,12 +6,13 @@ import Spotify from './spotify';
 export default class Manager extends EventEmitter {
     constructor() {
         super()
-        this.currentlyPlaying = new Song()
+        this.song = new Song()
         this.hue = new Hue(this)
         this.spotify = new Spotify(this)
         this.isPaused = true
         this.brightness = 254
         this.isLaunched = false
+        console.log('nuuuuu')
     }
 
     start() {
@@ -29,10 +30,20 @@ export default class Manager extends EventEmitter {
     }
 
     setSpotifyToken(token) {
-        this.spotify.token = token
-        this.spotify.isReady = true;
-        this.spotify.startPolling()
-        this.emit('update')
+        console.log('im sorry what')
+        console.log(token)
+        if(token == null) {
+            console.log(token)
+            this.spotify.token = null
+            this.spotify.isReady = false;
+            this.spotify.stopPolling()
+            this.emit('update')
+        } else {
+            this.spotify.token = token
+            this.spotify.isReady = true;
+            this.spotify.startPolling()
+            this.emit('update')
+        }
     }
 
     setHueToken(token) {
