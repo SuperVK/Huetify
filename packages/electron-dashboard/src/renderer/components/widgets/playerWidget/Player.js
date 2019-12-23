@@ -7,14 +7,14 @@ export default class Player extends Component {
         return (
             <div className="player" id="player">
                 <div className="playerWidget">
-                    <img className="thumbnail" alt="Album Cover" src={manager.currentlyPlaying.imgurl}></img>
+                    <img className="thumbnail" alt="Album Cover" src={manager.song.imgurl}></img>
                     <div className="details">
-                        <div className="songTitle">{manager.currentlyPlaying.name}</div> 
-                        <div className="artists">{manager.currentlyPlaying.artists.join(', ')}</div>
+                        <div className="songTitle">{manager.song.name}</div> 
+                        <div className="artists">{manager.song.artists.join(', ')}</div>
                     </div>
                 </div>
                 <div className="playerProgress" style={{
-                        backgroundPosition: 100-manager.currentlyPlaying.progressTime/manager.currentlyPlaying.fullLength*100 + '%'
+                        backgroundPosition: 100-manager.song.progressTime/manager.song.fullLength*100 + '%'
                 }}></div>
             </div>
         )

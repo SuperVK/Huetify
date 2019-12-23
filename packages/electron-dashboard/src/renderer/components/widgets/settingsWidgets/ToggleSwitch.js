@@ -20,6 +20,9 @@ export default class ToggleSwitch extends Component {
         )
     }
     toggle(e) {
+        /* 
+         * @TODO: make this all depended on manager.isLaunched instead of local state. 
+         */
         this.setState({
             on: e.target.checked
         })

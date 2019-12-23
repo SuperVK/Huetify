@@ -23,7 +23,7 @@ function createMainWindow() {
       nodeIntegrationInWorker: true,
       backgroundThrottling: false
     },
-    icon: '/logo.ico'
+    icon: isDevelopment ? '../../build/logo.png' : '/logo.ico'
   })
 
   if (isDevelopment) {
@@ -41,7 +41,7 @@ function createMainWindow() {
     }))
   }
   
-  
+  window.toggleDevTools()
   
   window.on('closed', () => {
     mainWindow = null

@@ -3,11 +3,11 @@ import './LoginWindow.css'
 import HueConnect from './HueConnect'
 import SpotifyConnect from './SpotifyConnect'
 import { manager } from '../../..'
-import spotifyLogin from './SpotifyLogin'
 
 export default class LoginWindow extends Component {
     componentDidMount() {
-        spotifyLogin.getAccessToken()
+        let refreshToken = localStorage.getItem('spotifyRefreshToken')
+        if(refreshToken != undefined) manager.setSpotifyRefreshToken(refreshToken)
         let hueIP = localStorage.getItem('hueIP')
         let hueToken = localStorage.getItem('hueToken')
         

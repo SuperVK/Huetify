@@ -1,30 +1,23 @@
+import React, { Component } from 'react'
 import { manager } from '../../../'
 import { remote } from 'electron'
-
-// https://auth0.com/blog/securing-electron-applications-with-openid-connect-and-oauth-2/
-
 const redirectUri = `file://callback`;
+let win = null
 
-let win = null;
-
-export default class spotifyLogin {
-    static getAccessToken() {
-        fetch(`${window.WORKER_URL}/accesstoken`, {
-            headers: {
-                'Authorization': window.localStorage.getItem('spotifyRefreshToken')
-            }
-        }).then(res => {
-            if(res.ok) {
-                res.text().then(body => {
-                    manager.setSpotifyToken(body)
-                })
-            }
-        })
+export default class SpotifyConnect extends Component {
+    render() {
+        let button;
+        let loggedIn = manager.spotify.refreshToken !== null
+        if(loggedIn) button = <div connected="true" onClick={this.logOut} className="signInButton spotifyLogin">Connected to Spotify</div>
+        else button = <div connected="false" onClick={this.openSpotifyLogin.bind(this)} className="signInButton spotifyLogin">Connect to Spotify</div>         
+        return button
     }
-
-
-    static openSpotifyLogin() {
-        spotifyLogin.destroyAuthWin();
+    logOut() {
+        localStorage.removeItem('spotifyRefreshToken')
+        manager.setSpotifyRefreshToken(null)
+    }
+    openSpotifyLogin() {
+        this.destroyAuthWin();
 
         // Create the browser window.
         win = new remote.BrowserWindow({
@@ -49,12 +42,12 @@ export default class spotifyLogin {
         webRequest.onBeforeRequest(filter, async ({
             url
         }) => {
-            spotifyLogin.parseURL(url)
-            spotifyLogin.destroyAuthWin();
+            this.parseURL(url)
+            this.destroyAuthWin();
         });
 
         win.on('authenticated', () => {
-            destroyAuthWin();
+            this.destroyAuthWin();
         });
 
         win.on('closed', () => {
@@ -63,7 +56,7 @@ export default class spotifyLogin {
         
     }
 
-    static parseURL(rawUrl) {
+    parseURL(rawUrl) {
         const url = new URL(rawUrl)
         let code = url.searchParams.get('code')
         fetch(`${WORKER_URL}/refreshtoken`, {
@@ -73,14 +66,15 @@ export default class spotifyLogin {
             }
         }).then(body => body.text()).then(res => {
             localStorage.setItem('spotifyRefreshToken', res)
-            spotifyLogin.getAccessToken()
+            manager.setSpotifyRefreshToken(res)
         })
     }
 
-    static destroyAuthWin() {
+    destroyAuthWin() {
         if (!win) return;
         win.close();
         win = null;
     }
-
 }
+
+
