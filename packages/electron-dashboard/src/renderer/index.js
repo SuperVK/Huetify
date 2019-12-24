@@ -6,6 +6,7 @@ import {
 import App from './components/App'
 import Manager from 'huetify-manager'
 import * as url from 'url'
+import path from 'path'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 window.WORKER_URL = 'https://huetify.supervk.workers.dev'

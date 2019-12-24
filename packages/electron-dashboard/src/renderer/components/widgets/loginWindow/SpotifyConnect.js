@@ -21,8 +21,8 @@ export default class SpotifyConnect extends Component {
 
         // Create the browser window.
         win = new remote.BrowserWindow({
-            width: 1000,
-            height: 600,
+            width: 600,
+            height: 900,
         });
 
         win.loadURL(`${WORKER_URL}/spotifylogin`);
