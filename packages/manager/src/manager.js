@@ -11,7 +11,6 @@ export default class Manager extends EventEmitter {
         this.spotify = new Spotify(this)
         this.isPaused = true
         this.brightness = 254
-        this.isLaunched = false
     }
 
     start() {
@@ -28,17 +27,16 @@ export default class Manager extends EventEmitter {
         this.hue.selectedLight = id
     }
 
-
     setSpotifyRefreshToken(token) {
         if(token == null) {
             this.spotify.stopPolling()
-            this.spotify.refreshtoken = null
+            this.spotify.refreshToken = null
             this.spotify.accessToken = {
                 token: null,
                 expiry: null
             }
             this.spotify.isReady = false;
-            
+            this.stop()
             this.emit('update')
         } else {
             this.spotify.refreshToken = token
@@ -53,6 +51,7 @@ export default class Manager extends EventEmitter {
         if(token == null) {
             this.hue.token = null
             this.hue.isReady = false;
+            this.stop()
             this.emit('update')
         } else {
             this.hue.token = token
