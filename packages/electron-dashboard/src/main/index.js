@@ -10,7 +10,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 let mainWindow
 
 function createMainWindow() {
-  const window = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: 650,
     height: 900,
     resizable: false,
@@ -20,37 +20,36 @@ function createMainWindow() {
     frame: false,
     webPreferences: {
       nodeIntegration: true,
-      nodeIntegrationInWorker: true,
       backgroundThrottling: false
     },
     icon: isDevelopment ? '../../build/logo.png' : '/logo.ico'
   })
 
   if (isDevelopment) {
-    window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
+    mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
     // window.loadURL(formatUrl({
     //   pathname: path.join(__dirname, '../renderer/index.html'),
     //   protocol: 'file',
     //   slashes: true
     // }))
   } else {
-    window.loadURL(formatUrl({
+    mainWindow.loadURL(formatUrl({
       pathname: path.join(__dirname, 'index.html'),
       protocol: 'file',
       slashes: true
     }))
   }
   
-  window.toggleDevTools()
+  mainWindow.toggleDevTools()
   
-  window.on('closed', () => {
+  mainWindow.on('closed', () => {
     mainWindow = null
   })
 
-  window.webContents.on('devtools-opened', () => {
-    window.focus()
+  mainWindow.webContents.on('devtools-opened', () => {
+    mainWindow.focus()
     setImmediate(() => {
-      window.focus()
+      mainWindow.focus()
     })
   })
 
