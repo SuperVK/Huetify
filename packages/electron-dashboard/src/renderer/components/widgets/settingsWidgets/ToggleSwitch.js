@@ -5,31 +5,24 @@ import { manager } from '../../../'
 export default class ToggleSwitch extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            on: false
-        }
+        this.state = {}
     }
     render() {
         return (
             <div className="startSwitch">
                <label className="switch">
-                    <input type="checkbox" onClick={this.toggle.bind(this)}></input>
-                    <span className="label round">{this.state.on ? 'Stop' : 'Start'}</span>
+                    <input id="toggleSwitchInput" checked={!manager.isPaused} type="checkbox" onChange={this.toggle.bind(this)}></input>
+                    <span className="label round">{manager.isPaused ? 'Start' : 'Stop'}</span>
                 </label> 
             </div>
         )
     }
     toggle(e) {
-        /* 
-         * @TODO: make this all depended on manager.isLaunched instead of local state. 
-         */
-        this.setState({
-            on: e.target.checked
-        })
         if(e.target.checked) {
             manager.start()
         } else {
             manager.stop()
         }
+        this.setState({})
     }
 }
