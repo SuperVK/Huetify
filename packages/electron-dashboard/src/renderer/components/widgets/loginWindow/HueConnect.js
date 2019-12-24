@@ -11,10 +11,9 @@ export default class HueConnect extends Component {
         this.bridges = []
     }
     render() {
-        
         let button = <div className="signInButton hueLogin">woop</div>
         let loggedIn = manager.hue.token
-        if(loggedIn) button = <div connected="true" onClick={this.logOut} className="signInButton hueLogin">Connected to Hue</div>
+        if(loggedIn) button = <div connected="true" onClick={this.logOut.bind(this)} className="signInButton hueLogin">Connected to Hue</div>
         else {
             if(this.state.action === 'loading') this.loadBridges()
             if(this.state.action === 'loading') button = <div connected="false" className="signInButton hueLogin">Searching hue bridges...</div>
@@ -45,6 +44,9 @@ export default class HueConnect extends Component {
         localStorage.removeItem('hueToken')
         localStorage.removeItem('hueLight')
         manager.setHueToken(null)
+        this.setState({
+            action: 'loading'
+        })
     }
     connectBridge(id) {
         let bridge = this.bridges.find(b => b.id === id)
