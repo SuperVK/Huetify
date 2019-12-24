@@ -10,7 +10,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 let mainWindow
 
 function createMainWindow() {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 650,
     height: 900,
     resizable: false,
@@ -53,7 +53,7 @@ function createMainWindow() {
     })
   })
 
-  return window
+  return mainWindow
 }
 
 // quit application when all windows are closed
