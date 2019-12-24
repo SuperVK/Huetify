@@ -117,9 +117,10 @@ async function handleRequest(request) {
                             }
                         })
                     }
-                    return new Response(body.access_token, {
+                    return new Response(JSON.stringify(body), {
                         status: 200,
                         headers: {
+                            'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin': '*'
                         }
                     })
