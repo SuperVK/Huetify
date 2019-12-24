@@ -1,7 +1,13 @@
+import Song from './song'
+
 export default class Spotify {
     constructor(manager) {
         this.manager = manager
-        this.token = null
+        this.refreshToken = null
+        this.accessToken = {
+            token: null,
+            expiry: null
+        }
         this.isReady = false;
         this.pollingTime = 1000
     }
@@ -20,6 +26,7 @@ export default class Spotify {
 
     pollCurrentlyPlaying() {
         let requestSend = new Date()-0
+        if(requestSend+1000 > this.accessToken.expiry) this.getAccessToken()
         this.request('me/player/currently-playing')
             .then(newCurrentlyPlaying => {
                 if(newCurrentlyPlaying.item === null) return
@@ -29,7 +36,7 @@ export default class Spotify {
                 else this.updateTiming(newCurrentlyPlaying, requestSend)
 
                 if(!newCurrentlyPlaying.is_playing && this.manager.song.isPlaying) this.songPause()            
-                if(!this.currentlyPlaying.isPlaying && currentlyPlaying.is_playing) this.songStart()
+                if(!this.manager.song.isPlaying && newCurrentlyPlaying.is_playing) this.songStart()
             })
     }
 
@@ -46,7 +53,7 @@ export default class Spotify {
     }
 
     updateSong(newCurrentlyPlaying, requestSend) {
-        clearInterval(this.manager.currentlyPlaying.timingInterval)
+        clearInterval(this.manager.song.timingInterval)
 
         this.manager.song = new Song(
             newCurrentlyPlaying.item,
@@ -55,7 +62,7 @@ export default class Spotify {
                 requestReceived: new Date()-0,
                 requestSend: requestSend
             },
-            this
+            this.manager
         )
     }
 
@@ -68,18 +75,29 @@ export default class Spotify {
         }
     }
 
-    async getAccessToken(workerURL) {
-        let res = await fetch(`${workerURL}/accesstoken`) //this sets the cookie spotifyAccessToken, no it doesn't lol
-        if(res.status === 401) return 'NO_REFRESH_TOKEN'
-            
-        return await res.text()
+    getAccessToken() {
+        console.log('GETTING ACCESS TOKEN')
+        fetch(`${WORKER_URL}/accesstoken`, {
+            headers: {
+                'Authorization': this.refreshToken
+            }
+        }).then(res => {
+            if(res.ok) {
+                res.json().then(data => {
+                    this.accessToken = {
+                        token: data.access_token,
+                        expiry: new Date()+(data.expires_in*1000)
+                    }
+                })
+            }
+        })
     }
 
     async request(endpoint, method, body) {
         let res = await fetch(`https://api.spotify.com/v1/${endpoint}`, {
             method: method,
             headers: {
-                Authorization: `Bearer ${this.token}`
+                Authorization: `Bearer ${this.accessToken.token}`
             },
             body: body
         })
