@@ -1,22 +1,29 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "huetify-mobile",
+  "version": "0.0.1",
+  "description": "the mobile version Huetify",
+  "author": "SuperVK",
+  "main": "__generated__/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
     "expo": "^36.0.0",
+    "huetify-manager": "^0.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-web": "^0.11.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "babel-preset-expo": "^8.0.0",
-    "@babel/core": "^7.0.0"
+    "expo-yarn-workspaces": "^1.2.1"
   },
   "private": true
 }
