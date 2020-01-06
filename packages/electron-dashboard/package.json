@@ -1,6 +1,6 @@
 {
   "name": "huetify-electron",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "The electron dashboard for Huetify",
   "author": "SuperVK",
   "main": "dist/main/main.js",
@@ -27,15 +27,30 @@
   "devDependencies": {
     "@babel/preset-react": "^7.7.4",
     "cross-env": "^6.0.3",
-    "electron": "^6.0.3",
+    "electron": "^6.1.7",
     "electron-builder": "^21.2.0",
     "electron-webpack": "^2.7.4",
     "webpack": "^4.35.3"
   },
   "build": {
+    "appId": "xyz.supervk.huetify",
+    "productName": "Huetify",
     "win": {
-      "target": "msi",
-      "icon": "build/icon.ico"
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "publisherName": "SuperVK"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.entertainment",
+      "icon": "build/icon.icns"
+    },
+    "dmg": {
+      "backgroundColor": "#212121"
     }
   },
   "electronWebpack": {
