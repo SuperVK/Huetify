@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import style from './LoginWindowStyle'
+import style from '../../styles/LoginWindowStyles'
 import HueConnect from './HueConnect'
 import SpotifyConnect from './SpotifyConnect'
 import { manager } from '../../helpers/manager'
