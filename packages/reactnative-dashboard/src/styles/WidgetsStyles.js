@@ -7,5 +7,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'column',
+    },
+    divider: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        borderStyle: 'solid',
+        borderBottomWidth: 2,
+        borderColor: '#535353',
+        marginVertical: 10
     }
 })

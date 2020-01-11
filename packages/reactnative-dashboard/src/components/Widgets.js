@@ -12,12 +12,13 @@ export default function Widgets() {
             <View style={styles.widget}>
                 <LoginWindow></LoginWindow>
             </View>
-            <View styles={styles.widget}>
+            <View style={styles.widget}>
                 <Player></Player>
             </View>
-
-            {/* <View className="divider"></View>
-            <View className={`hue ${manager.hue.isReady ? '' : 'disabled'}`}>
+            <View>
+                <View style={styles.divider}></View>
+            </View>
+            {/* <View className={`hue ${manager.hue.isReady ? '' : 'disabled'}`}>
                 <LightSelection></LightSelection>
                 <BrightnessSlider></BrightnessSlider>
                 </View>
