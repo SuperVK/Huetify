@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Image, Text, View } from 'react-native'
-import { manager } from '../../helpers/manager'
+import manager from '../../helpers/manager'
 import styles from '../../styles/PlayerStyles'
 
 export default class PlayerWidget extends Component {

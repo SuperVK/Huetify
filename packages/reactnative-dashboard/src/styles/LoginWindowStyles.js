@@ -2,26 +2,21 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     loginWindow: {
-        display: 'flex',
+        flex: 1,
+        width: '100%',
         flexDirection: 'row',
-        justifyContent: 'center',
-        width: '90%'
-    },
-    signInButtonFlex: {
-        display: 'flex',
-        flexGrow: 1
+        justifyContent: 'center'
     },
     signInButton: {
+        display: 'flex',
+        flexGrow: 1,
         color: 'white',
         backgroundColor: '#424242',
-        padding: 20,
-        borderRadius: 5
-    },
-    spotifyLogin: {
-        marginRight: '2%'
-    },
-    hueLogin: {
-        marginLeft: '2%'
+        borderRadius: 5,
+        height: 75,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     signInText: {
         fontSize: 16,
@@ -34,8 +29,6 @@ export default StyleSheet.create({
         color: 'white',
         backgroundColor: "#535353",
         textAlign: "center",
-        borderRadius: 5,
-        padding: 10,
-        marginTop: 10
+        borderRadius: 5
     }
 })

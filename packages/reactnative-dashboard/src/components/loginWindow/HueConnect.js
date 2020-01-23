@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import { manager } from '../../helpers/manager'
+import manager from '../../helpers/manager'
 import styles from '../../styles/LoginWindowStyles'
 
 export default class HueConnect extends Component {
@@ -30,14 +30,14 @@ export default class HueConnect extends Component {
             else if(this.state.action === 'choosing') {
                 
                 button = 
-                <View style={[styles.signInButtonFlex, styles.hueLogin]}>
-                    <View style={[styles.signInButton, styles.signInText]}><Text style={[{color: 'white'}, styles.signInText]}>Hue bridges found:</Text>
-                        {this.bridges.map(bridge => {
-                            return <Text key={bridge.id} onClick={this.connectBridge.bind(this, bridge.id)} style={styles.bridge}>
-                            {bridge.internalipaddress}
-                            </Text>
-                        })}
-                    </View>
+                <View style={[styles.signInButton, styles.hueLogin]}>
+                    <Text style={[{color: 'white'}, styles.signInText]}>Hue bridges found:</Text>
+                    {this.bridges.map(bridge => {
+                        return <Text key={bridge.id} onClick={this.connectBridge.bind(this, bridge.id)} style={styles.bridge}>
+                        {bridge.internalipaddress}
+                        </Text>
+                    })}
+                    
                 </View>
                 
             } else if(this.state.action === 'pressing') {

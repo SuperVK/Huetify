@@ -2,18 +2,16 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     player: {
-        width: '90%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignContent: 'center',
-        alignItems: 'center'
+        flex: 1,
+        width: '100%',
+        marginTop: 20,
+        marginBottom: 15
     },
     playerWidget: {
         color: 'white',
         padding: 15,
         width: '100%',
         paddingBottom: 5,
-        marginTop: 20,
         flexDirection: 'row',
         backgroundColor: '#535353',
         borderTopLeftRadius: 5,

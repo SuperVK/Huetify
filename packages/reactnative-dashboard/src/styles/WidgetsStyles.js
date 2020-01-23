@@ -2,19 +2,18 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     widgets: {
-        top: 25,
         display: 'flex',
-        alignItems: 'center',
-        alignContent: 'center',
-        flexDirection: 'column',
+        width: '90%',
+        alignItems: 'center'
     },
     divider: {
-        display: 'flex',
-        flexDirection: 'row',
         width: '100%',
         borderStyle: 'solid',
         borderBottomWidth: 2,
         borderColor: '#535353',
-        marginVertical: 10
+        marginVertical: 20
+    },
+    disabled: {
+        opacity: 0.5
     }
 })
