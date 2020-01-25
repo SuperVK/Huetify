@@ -44,6 +44,7 @@
 }
 
 
+
 footer,
 a {
     color: #a5a5a5;
@@ -64,3 +65,42 @@ a {
 #buffer1 { flex-grow: 1; }
 #buffer2 { flex-grow: 1; }
 #buffer3 { flex-grow: 2; }
+
+
+@media (orientation: portrait) {
+    .Title {
+        font-size: 55px;
+    }
+    
+    .Subtitle {
+        font-size: 20px;
+    }
+
+    .DownloadButton {
+        font-size: 35px;
+        padding: 0 20px;
+        padding-bottom: 15px;
+        padding-top: 10px;
+    }
+
+    .antivirus {
+        font-size: 10px;
+        width: 60%;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+
+    #corner0 {
+        margin-bottom: -140px;
+        margin-left: 50px;
+    }
+    
+    #corner1 {
+        transform: rotate(180deg);
+        margin-top: -130px;
+        margin-right: 50px;
+    }
+}
