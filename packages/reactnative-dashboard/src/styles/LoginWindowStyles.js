@@ -5,7 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     signInButton: {
         display: 'flex',
@@ -13,8 +13,6 @@ export default StyleSheet.create({
         color: 'white',
         backgroundColor: '#424242',
         borderRadius: 5,
-        height: 75,
-        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     },

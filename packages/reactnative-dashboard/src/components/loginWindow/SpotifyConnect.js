@@ -7,11 +7,11 @@ export default class SpotifyConnect extends Component {
     render() {
         let button;
         let loggedIn = manager.spotify.refreshToken !== null
-        if(loggedIn) button = <View style={[styles.signInButtonFlex, styles.spotifyLogin]}>
-                <Text connected="true" style={[styles.signInButton, styles.signInText]}>
-                    Connected to Spotify
-                </Text>
-            </View>
+        if(loggedIn) button = <View style={[styles.signInButton, styles.signInText]}>
+                    <Text connected="true">
+                        Connected to Spotify
+                    </Text>
+                </View>
         else button = 
         <View style={[styles.signInButton, styles.spotifyLogin]}>
                 <Text style={{

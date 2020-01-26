@@ -4,6 +4,7 @@ export default StyleSheet.create({
     widgets: {
         display: 'flex',
         width: '90%',
+        height: '100%',
         alignItems: 'center'
     },
     divider: {

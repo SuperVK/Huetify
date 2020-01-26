@@ -3,9 +3,7 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
     player: {
         flex: 1,
-        width: '100%',
-        marginTop: 20,
-        marginBottom: 15
+        width: '100%'
     },
     playerWidget: {
         color: 'white',
