@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     loginWindow: {
-        flex: 1,
+        flex: 0.75,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -12,7 +12,7 @@ export default StyleSheet.create({
         flexGrow: 1,
         color: 'white',
         backgroundColor: '#424242',
-        borderRadius: 5,
+        borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -23,8 +23,17 @@ export default StyleSheet.create({
     signInButtonConnected: {
         backgroundColor: "#388E3C",
     },
+    bridgeSelect: {
+        flex: 1,
+        alignContent: 'center'
+    },
+    brbuffer: {
+        flex: 1,
+        flexGrow: 0.5
+    },
     bridge: {
-        color: 'white',
+        flex: 1,
+        flexGrow: 1,
         backgroundColor: "#535353",
         textAlign: "center",
         borderRadius: 5

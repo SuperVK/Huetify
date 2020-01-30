@@ -12,8 +12,27 @@ export default class HueConnect extends Component {
         this.bridges = []
     }
     render() {
-        let button = <View style={[styles.signInButton]}></View>
+        let text = <Text style={{
+                    color: 'white',
+                    fontSize: 16
+                }}>Failure loading</Text>
 
+        let loggedIn = !!manager.hue.token
+
+        if(loggedIn) {
+            text = <Text style={{
+                    color: 'white',
+                    fontSize: 16
+                }}>Connected to Hue</Text>
+        } else {
+            text = <Text style={{
+                    color: 'white',
+                    fontSize: 16
+                }}>Connect to Hue</Text>
+        }
+        let button = <View style={[styles.signInButton, loggedIn && styles.signInButtonConnected]}>
+            {text}
+        </View>
         return button
     }
 
