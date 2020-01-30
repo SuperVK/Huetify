@@ -5,4 +5,6 @@ ports:
   - port: 19001
   - port: 19002
   # not sure what these are about but sure?
+  - port: 5037
+  - port: 4040
   
