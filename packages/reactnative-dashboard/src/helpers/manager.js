@@ -1,3 +1,5 @@
 import Manager from 'huetify-manager';
 
-export const manager = new Manager()
+const manager = new Manager()
+
+export default manager

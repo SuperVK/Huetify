@@ -12,6 +12,9 @@
     "eject": "expo eject",
     "postinstall": "expo-yarn-workspaces postinstall"
   },
+  "resolutions": {
+    "metro-config": "0.57.0"
+  },
   "dependencies": {
     "expo": "^36.0.0",
     "huetify-manager": "^0.1.1",

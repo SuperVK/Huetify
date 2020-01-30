@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import style from './LoginWindowStyle'
+import styles from '../../styles/LoginWindowStyles'
 import HueConnect from './HueConnect'
 import SpotifyConnect from './SpotifyConnect'
-import { manager } from '../../helpers/manager'
+import manager from '../../helpers/manager'
 
 export default class LoginWindow extends Component {
     // componentDidMount() {
@@ -19,8 +19,11 @@ export default class LoginWindow extends Component {
     // }
     render() {
         return (
-            <View style={style.loginWindow}>
-                <SpotifyConnect></SpotifyConnect> 
+            <View style={styles.loginWindow}>
+                <SpotifyConnect></SpotifyConnect>
+                <View style={{
+                    flexGrow: 0.1
+                }}></View>
                 <HueConnect></HueConnect>
             </View>
         )
