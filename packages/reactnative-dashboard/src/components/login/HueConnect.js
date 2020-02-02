@@ -85,52 +85,5 @@ export default class HueConnect extends Component {
         this.setState({
             action: 'loading'
         })
-    }
-    connectBridge(id) {
-        let bridge = this.bridges.find(b => b.id === id)
-        this.setState({
-            action: 'pressing',
-            timing: 0,
-            bridge: bridge.internalipaddress
-        })
-        manager.hue.ip = bridge.internalipaddress
-        this.interval = setInterval(async () => {
-            if(this.state.timing === 59) {
-                this.setState({
-                    action: 'choosing'
-                })
-                clearInterval(this.interval)
-                return
-            }
-            
-            let username = await manager.hue.createUsername()
-            .catch(() => {
-                return
-            })
-            
-            if(username !== undefined) {
-                manager.setHueToken(username)
-                // window.localStorage.setItem('hueIP', manager.hue.ip)
-                // window.localStorage.setItem('hueToken', manager.hue.token)
-                this.setState({
-                    action: 'done'
-                })
-                clearInterval(this.interval)
-                return
-            }
-
-            this.setState({
-                action: 'pressing',
-                timing: this.state.timing+1
-            })
-        }, 1000);
-    }
-    async loadBridges() {
-        manager.hue.getBridges().then(bridges => {
-            this.bridges = bridges
-            this.setState({
-                action: 'choosing'
-            })            
-        })
-    }
+    }    
 }

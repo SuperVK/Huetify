@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import LoginWindow from './loginWindow/LoginWindow'
+import LoginWindow from './login/LoginWindow'
 import Player from './playerWidget/PlayerWidget'
 import LightSelection from './settingsWidgets/LightSelection'
 import styles from '../styles/WidgetsStyles'
