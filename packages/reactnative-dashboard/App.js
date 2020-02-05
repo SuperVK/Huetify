@@ -1,15 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
-import manager from './src/helpers/manager'
-import Widgets from './src/components/Widgets'
-import styles from './src/styles/WidgetsStyles'
+import manager from './src/manager'
+import Widgets from './src/Widgets/Widgets'
+import styles from './src/Widgets/WidgetsStyles'
 
 export default function App() {    
     return (
         <View style={{
             width: '100%',
             height: '100%',
-            alignItems: 'center'
+            alignItems: 'center',
+            background: '#212121'
         }}>
             <Widgets></Widgets>
         

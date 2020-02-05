@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import manager from '../../helpers/manager'
-import styles from '../../styles/LoginWindowStyles'
+import manager from '../../manager'
+import styles from '../LoginWindowStyles'
 
 export default class HueConnect extends Component {
     constructor(props) {

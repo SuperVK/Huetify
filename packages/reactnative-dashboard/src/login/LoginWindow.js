@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import styles from '../../styles/LoginWindowStyles'
-import HueConnect from './HueConnect'
+import styles from './LoginWindowStyles'
+import HueConnect from './hue/HueConnect'
 import SpotifyConnect from './SpotifyConnect'
-import manager from '../../helpers/manager'
 
 export default class LoginWindow extends Component {
     // componentDidMount() {
