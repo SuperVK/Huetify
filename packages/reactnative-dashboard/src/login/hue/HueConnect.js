@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, TouchableHighlight } from 'react-native'
 import manager from '../../manager'
 import styles from '../LoginWindowStyles'
 
@@ -20,10 +20,15 @@ export default class HueConnect extends Component {
         let loggedIn = !!manager.hue.token
 
         if(loggedIn) {
-            text = <Text style={{
-                    color: 'white',
-                    fontSize: 16
-                }}>Connected to Hue</Text>
+            text = <TouchableHighlight
+                onPress={() => {
+
+                }}>
+                    <Text style={{
+                        color: 'white',
+                        fontSize: 16
+                    }}>Connected to Hue</Text>
+                </TouchableHighlight>
         } else {
             text = <Text style={{
                     color: 'white',
@@ -35,47 +40,6 @@ export default class HueConnect extends Component {
         </View>
         return button
     }
-
-    // render() {
-    //     let button = 
-    //     <View styles={[styles.signInButtonFlex, styles.hueLogin]}>
-    //         <Text style={styles.signInText}>woop</Text>
-    //     </View>
-    //     let loggedIn = manager.hue.token
-    //     if(loggedIn) button = 
-    //         <View style={[styles.signInButtonFlex, styles.hueLogin]}>
-    //             <Text style={[styles.signInButton, styles.signInText]}>Connected to Hue</Text>
-    //         </View>
-    //     else {
-    //         if(this.state.action === 'loading') this.loadBridges()
-    //         if(this.state.action === 'loading') button = 
-    //             <View styles={[styles.signInButtonFlex, styles.hueLogin]}>
-    //                 <Text connected="false" style={[styles.signInButton, styles.signInText]}>Searching hue bridges...</Text>
-    //             </View>
-    //         else if(this.state.action === 'choosing') {
-                
-    //             button = 
-    //             <View style={[styles.signInButton, styles.hueLogin]}>
-    //                 <Text style={[{color: 'white'}, styles.signInText]}>Hue bridges found:</Text>
-    //                 {this.bridges.map(bridge => {
-    //                     return <Text key={bridge.id} onClick={this.connectBridge.bind(this, bridge.id)} style={styles.bridge}>
-    //                     {bridge.internalipaddress}
-    //                     </Text>
-    //                 })}
-                    
-    //             </View>
-                
-    //         } else if(this.state.action === 'pressing') {
-    //             button = 
-    //             <Text style={styles.bridge}>
-    //                 Press the button on the hue bridge
-    //             </Text>
-    //         }
-    //     }
-
-    //     return button
-    // }
-    
 
     logOut() {
 
