@@ -10,7 +10,7 @@ export default function App() {
             width: '100%',
             height: '100%',
             alignItems: 'center',
-            background: '#212121'
+            backgroundColor: '#212121'
         }}>
             <Widgets></Widgets>
         
