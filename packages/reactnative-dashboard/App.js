@@ -1,4 +1,7 @@
-import React from 'react';
+import 'react-native-gesture-handler';
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import { View } from 'react-native';
 import manager from './src/manager'
 import Widgets from './src/Widgets/Widgets'
@@ -6,18 +9,20 @@ import styles from './src/Widgets/WidgetsStyles'
 
 export default function App() {    
     return (
-        <View style={{
-            width: '100%',
-            height: '100%',
-            alignItems: 'center',
-            backgroundColor: '#212121'
-        }}>
-            <Widgets></Widgets>
-        
-            {/* <Text style={styles.footer}>
-                © 2019 Victor Klomp | Built using Spotify API, Hue API and ReactJS
-            </Text> */}
-        </View>
+        <NavigationContainer>
+            <View style={{
+                width: '100%',
+                height: '100%',
+                alignItems: 'center',
+                backgroundColor: '#212121'
+            }}>
+                <Widgets></Widgets>
+            
+                {/* <Text style={styles.footer}>
+                    © 2019 Victor Klomp | Built using Spotify API, Hue API and ReactJS
+                </Text> */}
+            </View>
+        </NavigationContainer>
     );
     
 }
