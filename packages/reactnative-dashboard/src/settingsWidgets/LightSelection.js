@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import styles from '../../styles/SettingsWidgets'
+import styles from './SettingsWidgets'
 
 export default class LightSelection extends Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Image, Text, View } from 'react-native'
-import manager from '../../helpers/manager'
-import styles from '../../styles/PlayerStyles'
+import manager from '../manager'
+import styles from './PlayerStyles'
 
 export default class PlayerWidget extends Component {
     render() {
