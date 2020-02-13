@@ -16,6 +16,8 @@
     "metro-config": "0.57.0"
   },
   "dependencies": {
+    "@react-navigation/native": "^5.0.3",
+    "@react-navigation/stack": "^5.0.3",
     "expo": "^36.0.0",
     "huetify-manager": "^0.1.1",
     "react": "^16.9.0",
