@@ -25,6 +25,37 @@ export default class HueConnect extends Component {
             })            
         })
     }
+    
+    render() {
+        let text = <Text style={{
+                    color: 'white',
+                    fontSize: 16
+                }}>Loading brigdes..</Text>
+
+        let loggedIn = !!manager.hue.token
+
+        if(loggedIn) {
+            text = <TouchableHighlight
+                onPress={() => {
+                    this.setModalVisible(true)
+                }}>
+                    <Text style={{
+                        color: 'white',
+                        fontSize: 16
+                    }}>Connected to Hue</Text>
+                </TouchableHighlight>
+        } else {
+            text = <Text style={{
+                    color: 'white',
+                    fontSize: 16
+                }}>Connect to Hue</Text>
+        }
+        let button = <View style={[styles.signInButton, loggedIn && styles.signInButtonConnected]}>
+            
+        </View>
+        return button
+    }
+
     connectBridge(id) {
         let bridge = this.bridges.find(b => b.id === id)
         this.setState({
@@ -63,45 +94,6 @@ export default class HueConnect extends Component {
                 timing: this.state.timing+1
             })
         }, 1000);
-    }
-    render() {
-        let text = <Text style={{
-                    color: 'white',
-                    fontSize: 16
-                }}>Failure loading</Text>
-
-        let loggedIn = !!manager.hue.token
-
-        if(loggedIn) {
-            text = <TouchableHighlight
-                onPress={() => {
-                    this.setModalVisible(true)
-                }}>
-                    <Text style={{
-                        color: 'white',
-                        fontSize: 16
-                    }}>Connected to Hue</Text>
-                </TouchableHighlight>
-        } else {
-            text = <Text style={{
-                    color: 'white',
-                    fontSize: 16
-                }}>Connect to Hue</Text>
-        }
-        let button = <View style={[styles.signInButton, loggedIn && styles.signInButtonConnected]}>
-            <Picker
-                selectedValue={this.state.language}
-                style={{height: 50, width: 100, color: 'white', backgroundColor: '#424242'}}
-                onValueChange={(itemValue, itemIndex) =>
-                    this.setState({language: itemValue})
-                }>
-                {this.bridges.map(bridge => {
-                    {console.log(bridges.internalipaddress)}
-                    <Picker.Item label={bridge.internalipaddress} value={bridge.internalipaddress}/>
-                })}
-            </Picker>
-        </View>
-        return button
     }
 
     logOut() {
