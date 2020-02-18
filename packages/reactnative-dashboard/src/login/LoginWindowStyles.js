@@ -10,7 +10,6 @@ export default StyleSheet.create({
     signInButton: {
         display: 'flex',
         flexGrow: 1,
-        color: 'white',
         backgroundColor: '#424242',
         borderRadius: 15,
         justifyContent: 'center',
@@ -18,7 +17,8 @@ export default StyleSheet.create({
     },
     signInText: {
         fontSize: 16,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: 'white'
     },
     signInButtonConnected: {
         backgroundColor: "#388E3C",

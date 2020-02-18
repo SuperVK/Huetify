@@ -5,6 +5,10 @@ import HueConnect from './hue/HueConnect'
 import SpotifyConnect from './SpotifyConnect'
 
 export default class LoginWindow extends Component {
+    constructor(props) {
+        super(props)
+        this.navigation = props.navigation
+    }
     // componentDidMount() {
     //     // let refreshToken = localStorage.getItem('spotifyRefreshToken')
     //     // if(refreshToken != undefined) manager.setSpotifyRefreshToken(refreshToken)

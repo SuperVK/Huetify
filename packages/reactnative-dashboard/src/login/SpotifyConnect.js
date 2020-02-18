@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, TouchableHighlight } from 'react-native'
 import manager from '../manager'
 import styles from './LoginWindowStyles'
 
@@ -13,12 +13,12 @@ export default class SpotifyConnect extends Component {
                     </Text>
                 </View>
         else button = 
-        <View style={[styles.signInButton, styles.spotifyLogin]}>
+        <TouchableHighlight style={[styles.signInButton, styles.spotifyLogin]}>
                 <Text style={{
                     color: 'white',
                     fontSize: 16
                 }}>Connect to Spotify</Text>
-                </View>         
+                </TouchableHighlight>         
         return button
     }
 }

@@ -6,7 +6,6 @@ export default StyleSheet.create({
         width: '100%'
     },
     playerWidget: {
-        color: 'white',
         padding: 15,
         width: '100%',
         paddingBottom: 5,

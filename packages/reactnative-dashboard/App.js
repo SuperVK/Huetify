@@ -1,27 +1,24 @@
 import 'react-native-gesture-handler';
-import 'react-native-gesture-handler';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import { View } from 'react-native';
 import manager from './src/manager'
 import Widgets from './src/Widgets/Widgets'
+import BridgeSelection from './src/login/hue/BridgeSelection'
 import styles from './src/Widgets/WidgetsStyles'
 
-export default function App() {    
+const Stack = createStackNavigator();
+
+export default function App() {
     return (
         <NavigationContainer>
-            <View style={{
-                width: '100%',
-                height: '100%',
-                alignItems: 'center',
-                backgroundColor: '#212121'
-            }}>
-                <Widgets></Widgets>
-            
-                {/* <Text style={styles.footer}>
-                    © 2019 Victor Klomp | Built using Spotify API, Hue API and ReactJS
-                </Text> */}
-            </View>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Homepage"
+                    component={Widgets}
+                />
+            </Stack.Navigator>
         </NavigationContainer>
     );
     

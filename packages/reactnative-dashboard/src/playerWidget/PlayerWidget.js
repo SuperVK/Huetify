@@ -16,7 +16,7 @@ export default class PlayerWidget extends Component {
                         <Text style={styles.artists}>{manager.song.artists.join(', ')}</Text>
                     </View>
                 </View>
-                <View className="playerProgress" style={{
+                <View style={{
                         backgroundPosition: 100-manager.song.progressTime/manager.song.fullLength*100 + '%'
                 }}></View>
             </View>
