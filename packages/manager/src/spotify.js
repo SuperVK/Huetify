@@ -26,7 +26,7 @@ export default class Spotify {
 
     pollCurrentlyPlaying() {
         let requestSend = new Date()-0
-        if(requestSend+1000 > this.accessToken.expiry) this.getAccessToken()
+        if(requestSend+1000 > this.accessToken.expireDate) this.getAccessToken()
         this.request('me/player/currently-playing')
             .then(newCurrentlyPlaying => {
                 if(newCurrentlyPlaying.item === null) return
@@ -86,7 +86,7 @@ export default class Spotify {
                 res.json().then(data => {
                     this.accessToken = {
                         token: data.access_token,
-                        expiry: new Date()+(data.expires_in*1000)
+                        expireDate: new Date()+(data.expires_in*1000)
                     }
                 })
             }
