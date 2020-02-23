@@ -27,7 +27,7 @@ export default class LoginWindow extends Component {
                 <View style={{
                     flexGrow: 0.1
                 }}></View>
-                <HueConnect></HueConnect>
+                <HueConnect navigation={this.navigation}></HueConnect>
             </View>
         )
     }

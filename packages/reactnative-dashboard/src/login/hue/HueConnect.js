@@ -12,7 +12,7 @@ export default class HueConnect extends Component {
     render() {
         let button = <TouchableHighlight 
             style={[styles.signInButton]}
-            onPress={console.log('doop')}
+            onPress={console.log('poop')}
         >
             <Text style={styles.signInText}>Select Hue Bridge</Text>
         </TouchableHighlight>
