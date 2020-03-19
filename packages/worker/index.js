@@ -1,5 +1,5 @@
 const CLIENT_ID = '6caaf5d0a58e47868553160955e5b8e4'
-const CLIENT_SECRET = '66c3c9105c2147fb89a49abe33c7aafd'
+const CLIENT_SECRET = 'REDACTED'
 const REDIRECT_URL = '/spotifycb'
 const WORKER_URL = 'https://huetifydev.supervk.workers.dev'
 const CALLBACK_URL = 'file://callback'
