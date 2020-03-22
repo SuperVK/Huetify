@@ -6,7 +6,7 @@ export default class Spotify {
         this.refreshToken = null
         this.accessToken = {
             token: null,
-            expiry: null
+            expireDate: null
         }
         this.isReady = false;
         this.pollingTime = 1000
@@ -25,7 +25,7 @@ export default class Spotify {
     }
 
     pollCurrentlyPlaying() {
-        let requestSend = new Date()-0
+        let requestSend = Date.now()
         if(requestSend+1000 > this.accessToken.expireDate) this.getAccessToken()
         this.request('me/player/currently-playing')
             .then(newCurrentlyPlaying => {
@@ -59,7 +59,7 @@ export default class Spotify {
             newCurrentlyPlaying.item,
             newCurrentlyPlaying.progress_ms, 
             {
-                requestReceived: new Date()-0,
+                requestReceived: Date.now(),
                 requestSend: requestSend
             },
             this.manager
@@ -71,7 +71,7 @@ export default class Spotify {
         this.manager.song.originalProgressTime = newCurrentlyPlaying.progress_ms
         this.manager.song.timing = {
             requestSend: requestSend,
-            requestReceived: new Date()-0
+            requestReceived: Date.now()
         }
     }
 
@@ -86,7 +86,7 @@ export default class Spotify {
                 res.json().then(data => {
                     this.accessToken = {
                         token: data.access_token,
-                        expireDate: new Date()+(data.expires_in*1000)
+                        expireDate: Date.now()+(data.expires_in*1000)
                     }
                 })
             }
