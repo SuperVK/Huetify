@@ -1,6 +1,6 @@
 {
   "name": "huetify-electron",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "The electron dashboard for Huetify",
   "author": "SuperVK",
   "main": "dist/main/main.js",
