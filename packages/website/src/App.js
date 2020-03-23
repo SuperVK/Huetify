@@ -15,7 +15,7 @@ function App() {
         by combining your Philips Hue lamps with Spotify
       </div>
       <div id="buffer2"></div>
-      <a className="DownloadButton" href="Huetify Setup 0.0.3.exe">Download</a>
+      <a className="DownloadButton" href="https://github.com/SuperVK/Huetify/releases/latest">DOWNLOAD</a>
       <div className="antivirus">*Click on advanced options and continue when windows defender comes up (I swear it's not a virus)</div>
       <div id="buffer3"></div>
 
