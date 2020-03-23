@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "postinstall":"cd ./packages/expoapp && expo-yarn-workspaces postinstall"
+        "postinstall":"cd ./packages/reactnative-dashboard && expo-yarn-workspaces postinstall"
     },
     "workspaces": {
         "packages": [

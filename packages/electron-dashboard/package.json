@@ -16,6 +16,7 @@
     "@loopmode/electron-webpack-config-yarn-workspaces": "^0.2.0",
     "dotenv": "^6.2.0",
     "electron-log": "^3.0.9",
+    "html-loader": "^1.0.0-alpha.0",
     "huetify-manager": "^0.1.1",
     "js-cookie": "^2.2.1",
     "node-fetch": "^2.6.0",
