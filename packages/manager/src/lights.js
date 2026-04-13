@@ -1,3 +1,5 @@
+import noble from 'noble';
+
 export default class Hue {
     constructor(manager) {
         this.manager = manager
@@ -39,7 +41,7 @@ export default class Hue {
                     resolve(bridges)
                 })
         })
-        
+
     }
     async getAllLights() {
         return new Promise((resolve, reject) => {
@@ -74,5 +76,82 @@ export default class Hue {
             on: true,
             transitiontime: 0
         })
+    }
+}
+
+export class Zengge {
+    constructor(manager) {
+        this.manager = manager;
+        this.selectedLight = '08:65:F0:21:2F:A9'; // Replace with the MAC address of your Bluetooth light
+        this.isReady = false;
+
+        // Initialize Bluetooth
+        noble.on('stateChange', (state) => {
+            if (state === 'poweredOn') {
+                this.isReady = true;
+            } else {
+                this.isReady = false;
+            }
+        });
+
+        noble.on('discover', (peripheral) => {
+            if (peripheral.address === this.selectedLight) {
+                this.selectedPeripheral = peripheral;
+                noble.stopScanning();
+            }
+        });
+    }
+
+    setLampState(body) {
+        if (!this.isReady) {
+            console.error('Bluetooth not ready');
+            return;
+        }
+
+        if (!this.selectedPeripheral) {
+            console.error('Bluetooth light not found');
+            return;
+        }
+
+        const { characteristics } = this.selectedPeripheral;
+
+        // Modify this section based on the specific Bluetooth protocol of your light
+        const writeCharacteristic = characteristics.find((characteristic) =>
+            characteristic.properties.includes('write')
+        );
+
+        if (!writeCharacteristic) {
+            console.error('Write characteristic not found');
+            return;
+        }
+
+        const data = Buffer.from(JSON.stringify(body), 'utf-8');
+        writeCharacteristic.write(data, true, (error) => {
+            if (error) {
+                console.error('Failed to write data to Bluetooth light', error);
+            } else {
+                console.log('Successfully wrote data to Bluetooth light');
+            }
+        });
+    }
+
+    // Additional methods for Bluetooth lights can be added as needed
+
+    // Example method to turn off the Bluetooth light
+    turnOff() {
+        // Use the setLampState method to send the command to turn off the light
+        this.setLampState({
+            on: false,
+            transitiontime: 0
+        });
+    }
+
+    // Example method to turn on the Bluetooth light
+    turnOn() {
+        // Use the setLampState method to send the command to turn on the light
+        this.setLampState({
+            on: true,
+            transitiontime: 0
+        });
     }
 }
